@@ -6,7 +6,7 @@
   "packageManager": "pnpm@10.26.2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gukii/mobile-safari-tab-group-scroll.git"
+    "url": "git+https://github.com/gukii/mobile-safari-tab-group-scroll.git"
   },
   "bugs": {
     "url": "https://github.com/gukii/mobile-safari-tab-group-scroll/issues"
