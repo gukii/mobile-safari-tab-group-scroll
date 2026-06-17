@@ -1,0 +1,54 @@
+{
+  "name": "mobile-safari-tab-group-scroll",
+  "version": "0.1.0",
+  "description": "React hook for detecting iOS Safari tab-group viewport loss and applying a scroll correction.",
+  "type": "module",
+  "packageManager": "pnpm@10.26.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gukii/mobile-safari-tab-group-scroll.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gukii/mobile-safari-tab-group-scroll/issues"
+  },
+  "homepage": "https://github.com/gukii/mobile-safari-tab-group-scroll#readme",
+  "sideEffects": [
+    "./dist/styles.css"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "examples"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && cp src/styles.css dist/styles.css",
+    "clean": "rm -rf dist",
+    "prepare": "npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0 || >=19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.2",
+    "typescript": "^5.9.3"
+  },
+  "keywords": [
+    "react",
+    "ios",
+    "safari",
+    "visualviewport",
+    "tab-group",
+    "mobile"
+  ],
+  "license": "MIT"
+}
