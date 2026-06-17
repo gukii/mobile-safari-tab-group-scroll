@@ -18,7 +18,7 @@ From a public GitHub repo before publishing:
 pnpm add github:gukii/mobile-safari-tab-group-scroll
 ```
 
-The package has a `prepare` script, so package managers can build `dist/` during install from Git.
+The package commits `dist/`, so installing from GitHub does not need build-script allowlisting.
 
 From a local checkout:
 

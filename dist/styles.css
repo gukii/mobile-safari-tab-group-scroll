@@ -1,0 +1,21 @@
+:root {
+  --mobile-safari-tab-group-offset: 0px;
+  --mobile-safari-tab-group-scroll: var(--mobile-safari-tab-group-offset);
+}
+
+html.mobile-safari-tab-group-detected,
+html.mobile-safari-tab-group-detected body,
+html.mobile-safari-tab-group-detected body > #root {
+  height: calc(var(--app-height, 100dvh) + var(--mobile-safari-tab-group-scroll)) !important;
+  min-height: calc(var(--app-height, 100dvh) + var(--mobile-safari-tab-group-scroll)) !important;
+  max-height: none !important;
+  overflow-y: auto !important;
+}
+
+.mobile-safari-tab-group-padding {
+  padding-top: max(env(safe-area-inset-top), var(--mobile-safari-tab-group-offset));
+}
+
+.mobile-safari-tab-group-lift {
+  transform: translateY(calc(-1 * var(--mobile-safari-tab-group-offset)));
+}
