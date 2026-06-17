@@ -102,6 +102,92 @@ export function App() {
 }
 ```
 
+## SSR / Client-Only Wrapper
+
+For SSR frameworks, use `MobileSafariTabGroupScrollCorrection`. It is a client component and waits until after client mount before calling the hook.
+
+```tsx
+import { MobileSafariTabGroupScrollCorrection } from "mobile-safari-tab-group-scroll";
+import "mobile-safari-tab-group-scroll/styles.css";
+
+export function SafariViewportCorrection() {
+  return (
+    <MobileSafariTabGroupScrollCorrection>
+      {(state) =>
+        state.isLikelyTabGroupChromeVisible ? (
+          <div role="status">
+            Safari tab group corrected by {state.scrollPx}px
+          </div>
+        ) : null
+      }
+    </MobileSafariTabGroupScrollCorrection>
+  );
+}
+```
+
+Render it once near the root of your app. If you do not need UI, omit `children`:
+
+```tsx
+<MobileSafariTabGroupScrollCorrection />
+```
+
+### Next.js App Router
+
+Create a client component:
+
+```tsx
+// app/SafariViewportCorrection.tsx
+"use client";
+
+import { MobileSafariTabGroupScrollCorrection } from "mobile-safari-tab-group-scroll";
+
+export function SafariViewportCorrection() {
+  return <MobileSafariTabGroupScrollCorrection />;
+}
+```
+
+Import the CSS and render the client component from your root layout:
+
+```tsx
+// app/layout.tsx
+import "mobile-safari-tab-group-scroll/styles.css";
+import { SafariViewportCorrection } from "./SafariViewportCorrection";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <SafariViewportCorrection />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+### TanStack Start
+
+Render the correction component in your root route/component:
+
+```tsx
+import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { MobileSafariTabGroupScrollCorrection } from "mobile-safari-tab-group-scroll";
+import "mobile-safari-tab-group-scroll/styles.css";
+
+export const Route = createFileRoute("/__root")({
+  component: RootComponent,
+});
+
+function RootComponent() {
+  return (
+    <>
+      <MobileSafariTabGroupScrollCorrection />
+      <Outlet />
+    </>
+  );
+}
+```
+
 ## CSS Integration
 
 The package CSS defines:
@@ -170,6 +256,18 @@ type MobileSafariTabGroupScrollState = {
   scrollPx: number;
 };
 ```
+
+## Exports
+
+```ts
+import {
+  MobileSafariTabGroupScrollCorrection,
+  useMobileSafariTabGroupScroll,
+  useMobileSafariTabGroupOffset,
+} from "mobile-safari-tab-group-scroll";
+```
+
+`useMobileSafariTabGroupOffset` is a compatibility alias for `useMobileSafariTabGroupScroll`.
 
 ## Notes
 

@@ -1,4 +1,9 @@
 export {
+  MobileSafariTabGroupScrollCorrection,
+  type MobileSafariTabGroupScrollCorrectionProps,
+} from "./MobileSafariTabGroupScrollCorrection";
+
+export {
   defaultKnownAppleScreenSizes,
   useMobileSafariTabGroupOffset,
   useMobileSafariTabGroupScroll,
