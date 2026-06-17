@@ -142,7 +142,7 @@ function measure(options) {
 }
 export function useMobileSafariTabGroupScroll({ enabled = true, applyScrollCorrection = true, logDetection = true, offsetCssVariable = defaultOffsetCssVariable, scrollCssVariable = defaultScrollCssVariable, detectedClassName = defaultDetectedClassName, correctionDelaysMs = defaultCorrectionDelaysMs, ...measureOptions } = {}) {
     const loggedDetectionRef = useRef(false);
-    const appliedScrollRef = useRef(0);
+    const scheduledScrollRef = useRef(0);
     const [state, setState] = useState(() => emptyState());
     useEffect(() => {
         if (!hasWindow())
@@ -154,7 +154,7 @@ export function useMobileSafariTabGroupScroll({ enabled = true, applyScrollCorre
             document.documentElement.style.removeProperty(offsetCssVariable);
             document.documentElement.style.removeProperty(scrollCssVariable);
             document.documentElement.classList.remove(detectedClassName);
-            appliedScrollRef.current = 0;
+            scheduledScrollRef.current = 0;
         };
         if (!enabled) {
             clearCorrection();
@@ -167,11 +167,11 @@ export function useMobileSafariTabGroupScroll({ enabled = true, applyScrollCorre
             const scrollingElement = document.scrollingElement ?? document.documentElement;
             scrollingElement.scrollTop = scrollPx;
             window.scrollTo({ top: scrollPx, left: 0, behavior: "instant" });
-            appliedScrollRef.current = scrollPx;
         };
         const scheduleScrollCorrection = (scrollPx) => {
             if (!applyScrollCorrection || scrollPx <= 0)
                 return;
+            scheduledScrollRef.current = scrollPx;
             window.requestAnimationFrame(() => {
                 window.requestAnimationFrame(() => scrollToOffset(scrollPx));
             });
@@ -196,12 +196,11 @@ export function useMobileSafariTabGroupScroll({ enabled = true, applyScrollCorre
                         scrollHeight: document.scrollingElement?.scrollHeight,
                     });
                 }
-                if (next.scrollPx > 0 &&
-                    (appliedScrollRef.current !== next.scrollPx || Math.abs(window.scrollY - next.scrollPx) > 1)) {
+                if (next.scrollPx > 0 && scheduledScrollRef.current !== next.scrollPx) {
                     scheduleScrollCorrection(next.scrollPx);
                 }
                 else if (next.offsetPx === 0) {
-                    appliedScrollRef.current = 0;
+                    scheduledScrollRef.current = 0;
                 }
             });
         };

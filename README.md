@@ -246,6 +246,8 @@ useMobileSafariTabGroupScroll({
 });
 ```
 
+`applyScrollCorrection` performs one controlled correction sequence per detected offset. It does not continuously force the scroll position. The `correctionDelaysMs` values are delayed retries inside that single sequence so Safari can finish its first layout pass before the final correction runs.
+
 ## Return Value
 
 ```ts

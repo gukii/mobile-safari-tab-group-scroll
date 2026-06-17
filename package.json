@@ -1,6 +1,6 @@
 {
   "name": "@gukii/mobile-safari-tab-group-scroll",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React hook for detecting iOS Safari tab-group viewport loss and applying a scroll correction.",
   "type": "module",
   "packageManager": "pnpm@10.26.2",
