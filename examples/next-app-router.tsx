@@ -1,7 +1,7 @@
 "use client";
 
-import { MobileSafariTabGroupScrollCorrection } from "mobile-safari-tab-group-scroll";
-import "mobile-safari-tab-group-scroll/styles.css";
+import { MobileSafariTabGroupScrollCorrection } from "@gukii/mobile-safari-tab-group-scroll";
+import "@gukii/mobile-safari-tab-group-scroll/styles.css";
 
 export function SafariTabGroupCorrection() {
   return (
@@ -34,7 +34,7 @@ export function SafariTabGroupCorrection() {
 //
 // app/layout.tsx
 // import { Providers } from "./providers";
-// import "mobile-safari-tab-group-scroll/styles.css";
+// import "@gukii/mobile-safari-tab-group-scroll/styles.css";
 //
 // export default function RootLayout({ children }: { children: React.ReactNode }) {
 //   return (

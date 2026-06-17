@@ -1,4 +1,4 @@
-# mobile-safari-tab-group-scroll
+# @gukii/mobile-safari-tab-group-scroll
 
 React hook for detecting the extra iOS Safari tab-group row and applying a delayed scroll correction.
 
@@ -9,7 +9,7 @@ This is intended for full-screen mobile web apps where iPhone/iPad Safari tab gr
 From npm after publishing:
 
 ```bash
-pnpm add mobile-safari-tab-group-scroll
+pnpm add @gukii/mobile-safari-tab-group-scroll
 ```
 
 From a public GitHub repo before publishing:
@@ -31,7 +31,7 @@ In a pnpm workspace:
 ```json
 {
   "dependencies": {
-    "mobile-safari-tab-group-scroll": "workspace:*"
+    "@gukii/mobile-safari-tab-group-scroll": "workspace:*"
   }
 }
 ```
@@ -53,8 +53,8 @@ pnpm publish --access public
 Import the hook once near the root of your React app.
 
 ```tsx
-import { useMobileSafariTabGroupScroll } from "mobile-safari-tab-group-scroll";
-import "mobile-safari-tab-group-scroll/styles.css";
+import { useMobileSafariTabGroupScroll } from "@gukii/mobile-safari-tab-group-scroll";
+import "@gukii/mobile-safari-tab-group-scroll/styles.css";
 
 export function App() {
   const safariTabGroup = useMobileSafariTabGroupScroll();
@@ -76,8 +76,8 @@ export function App() {
 
 ```tsx
 import { useState } from "react";
-import { useMobileSafariTabGroupScroll } from "mobile-safari-tab-group-scroll";
-import "mobile-safari-tab-group-scroll/styles.css";
+import { useMobileSafariTabGroupScroll } from "@gukii/mobile-safari-tab-group-scroll";
+import "@gukii/mobile-safari-tab-group-scroll/styles.css";
 
 export function App() {
   const [enabled, setEnabled] = useState(true);
@@ -107,8 +107,8 @@ export function App() {
 For SSR frameworks, use `MobileSafariTabGroupScrollCorrection`. It is a client component and waits until after client mount before calling the hook.
 
 ```tsx
-import { MobileSafariTabGroupScrollCorrection } from "mobile-safari-tab-group-scroll";
-import "mobile-safari-tab-group-scroll/styles.css";
+import { MobileSafariTabGroupScrollCorrection } from "@gukii/mobile-safari-tab-group-scroll";
+import "@gukii/mobile-safari-tab-group-scroll/styles.css";
 
 export function SafariViewportCorrection() {
   return (
@@ -139,7 +139,7 @@ Create a client component:
 // app/SafariViewportCorrection.tsx
 "use client";
 
-import { MobileSafariTabGroupScrollCorrection } from "mobile-safari-tab-group-scroll";
+import { MobileSafariTabGroupScrollCorrection } from "@gukii/mobile-safari-tab-group-scroll";
 
 export function SafariViewportCorrection() {
   return <MobileSafariTabGroupScrollCorrection />;
@@ -150,7 +150,7 @@ Import the CSS and render the client component from your root layout:
 
 ```tsx
 // app/layout.tsx
-import "mobile-safari-tab-group-scroll/styles.css";
+import "@gukii/mobile-safari-tab-group-scroll/styles.css";
 import { SafariViewportCorrection } from "./SafariViewportCorrection";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -171,8 +171,8 @@ Render the correction component in your root route/component:
 
 ```tsx
 import { createFileRoute, Outlet } from "@tanstack/react-router";
-import { MobileSafariTabGroupScrollCorrection } from "mobile-safari-tab-group-scroll";
-import "mobile-safari-tab-group-scroll/styles.css";
+import { MobileSafariTabGroupScrollCorrection } from "@gukii/mobile-safari-tab-group-scroll";
+import "@gukii/mobile-safari-tab-group-scroll/styles.css";
 
 export const Route = createFileRoute("/__root")({
   component: RootComponent,
@@ -195,7 +195,7 @@ The package CSS defines:
 ```css
 :root {
   --mobile-safari-tab-group-offset: 0px;
-  --mobile-safari-tab-group-scroll: var(--mobile-safari-tab-group-offset);
+  --@gukii/mobile-safari-tab-group-scroll: var(--mobile-safari-tab-group-offset);
 }
 ```
 
@@ -208,7 +208,7 @@ mobile-safari-tab-group-detected
 The included CSS gives the page enough scrollable height for the correction:
 
 ```tsx
-import "mobile-safari-tab-group-scroll/styles.css";
+import "@gukii/mobile-safari-tab-group-scroll/styles.css";
 ```
 
 If your app has stronger mobile layout rules such as `overflow: hidden` on `html`, `body`, or `#root`, import this CSS after your app CSS or copy the rule into your app stylesheet.
@@ -264,7 +264,7 @@ import {
   MobileSafariTabGroupScrollCorrection,
   useMobileSafariTabGroupScroll,
   useMobileSafariTabGroupOffset,
-} from "mobile-safari-tab-group-scroll";
+} from "@gukii/mobile-safari-tab-group-scroll";
 ```
 
 `useMobileSafariTabGroupOffset` is a compatibility alias for `useMobileSafariTabGroupScroll`.

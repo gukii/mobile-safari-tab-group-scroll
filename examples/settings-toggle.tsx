@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useMobileSafariTabGroupScroll } from "mobile-safari-tab-group-scroll";
-import "mobile-safari-tab-group-scroll/styles.css";
+import { useMobileSafariTabGroupScroll } from "@gukii/mobile-safari-tab-group-scroll";
+import "@gukii/mobile-safari-tab-group-scroll/styles.css";
 
 export function SettingsToggleExample() {
   const [enabled, setEnabled] = useState(true);
